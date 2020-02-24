@@ -57,26 +57,6 @@ grunt.initConfig({
 	},
 
 
-	htmlmin: {                                     // Task
-		dist: {                                      // Target
-			options: {                                 // Target options
-			removeComments: true,
-			collapseWhitespace: true
-			},
-			files: {                                   // Dictionary of files
-			'formative_3.1/index.html': 'formative_3.1/index.html',     // 'destination': 'source'
-			'formative_3.1/about.html': 'formative_3.1/about.html'
-			}
-		},
-		dev: {                                       // Another target
-			files: {
-			'formative_3.1/index.html': 'formative_3.1/index.html',     // 'destination': 'source'
-			'formative_3.1/about.html': 'formative_3.1/about.html'
-			}
-		}
-	},
-
-
 	imagemin: {
 		static: {
 			options: {
@@ -105,7 +85,7 @@ grunt.initConfig({
 		target: {
 			files: [{
 			expand: true,
-			cwd: 'formative_3.1/css',
+			// cwd: 'formative_3.1/css',
 			src: ['css/style.css','!style.min.css'],
 			dest: 'css/style.min.css',
 			ext: '.min.css'
@@ -121,8 +101,7 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  // grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 
@@ -130,7 +109,7 @@ grunt.initConfig({
 
   // Default task(s).
   grunt.registerTask('default', ['sass'], ['csslint'], ['jshint'], ['watch']);
-  grunt.registerTask('mtask',['uglify'], ['htmlmin'], ['imagemin'], ['cssmin']);
+  grunt.registerTask('mtask',['uglify'], ['cssmin']);
   // 'default' checks everything, but can be renamed ie. default = test, [grunt] = [grunt test]
 
 };
