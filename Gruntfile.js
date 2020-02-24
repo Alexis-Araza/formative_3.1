@@ -82,7 +82,7 @@ grunt.initConfig({
 			options: {
 			optimizationLevel: 3,
 			// svgoPlugins: [{removeViewBox: false}],
-			use: [mozjpeg()] // Example plugin usage
+			// use: [mozjpeg()] // Example plugin usage
 			},
 			files: {
 			'dist/img.png': 'src/img.png',
@@ -129,8 +129,8 @@ grunt.initConfig({
 
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify'], ['sass'], ['csslint'], ['jshint'], ['watch']);
-  grunt.registerTask('default', ['htmlmin'], ['imagemin'], ['cssmin']);
+  grunt.registerTask('default', ['sass'], ['csslint'], ['jshint'], ['watch']);
+  grunt.registerTask('mtask',['uglify'], ['htmlmin'], ['imagemin'], ['cssmin']);
   // 'default' checks everything, but can be renamed ie. default = test, [grunt] = [grunt test]
 
 };
