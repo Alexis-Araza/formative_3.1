@@ -87,7 +87,7 @@ grunt.initConfig({
 			expand: true,
 			// cwd: 'formative_3.1/css',
 			src: ['css/style.css','!style.min.css'],
-			dest: 'css/style.min.css',
+			dest: 'formative_3.1/css',
 			ext: '.min.css'
 			}]
 		}

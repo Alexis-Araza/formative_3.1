@@ -9,8 +9,8 @@ $(document).ready(function(){
 
 	//reading users choice
 	document.getElementById('submit').addEventListener('click', function(){
-		country = document.getElementById('selectCountry').value;
-		lang = document.getElementById('selectLang').value;
+		var country = document.getElementById('selectCountry').value;
+		var category = document.getElementById('selectCate').value;
 
 		console.log(selectCountry,selectLang); //actual parameter
 		var apiUser ='harleydavidson';
