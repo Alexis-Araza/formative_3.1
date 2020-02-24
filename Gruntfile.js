@@ -36,13 +36,13 @@ grunt.initConfig({
 			  import: false,
 			  'order-alphabetical': false
 			},
-			src: ['css/*.css','!*.min.css']
+			src: ['css/style.css','!style.min.css']
 		}
 	},
 
 
 	jshint: {
-		all: ['Gruntfile.js', 'js/*.js']
+		all: ['Gruntfile.js', 'js/script.js']
 	},
 
 
@@ -64,14 +64,14 @@ grunt.initConfig({
 			collapseWhitespace: true
 			},
 			files: {                                   // Dictionary of files
-			'dist/index.html': 'src/index.html',     // 'destination': 'source'
-			'dist/contact.html': 'src/contact.html'
+			'formative_3.1/index.html': 'formative_3.1/index.html',     // 'destination': 'source'
+			'formative_3.1/about.html': 'formative_3.1/about.html'
 			}
 		},
 		dev: {                                       // Another target
 			files: {
-			'dist/index.html': 'src/index.html',
-			'dist/contact.html': 'src/contact.html'
+			'formative_3.1/index.html': 'formative_3.1/index.html',     // 'destination': 'source'
+			'formative_3.1/about.html': 'formative_3.1/about.html'
 			}
 		}
 	},
@@ -81,7 +81,7 @@ grunt.initConfig({
 		static: {
 			options: {
 			optimizationLevel: 3,
-			svgoPlugins: [{removeViewBox: false}],
+			// svgoPlugins: [{removeViewBox: false}],
 			use: [mozjpeg()] // Example plugin usage
 			},
 			files: {
@@ -94,8 +94,8 @@ grunt.initConfig({
 			files: [{
 			expand: true,
 			cwd: 'src/',
-			src: ['**/*.{png,jpg,gif}'],
-			dest: 'dist/'
+			src: ['m-img/*.{png,jpg,gif}'],
+			dest: 'm-img/'
 			}]
 		}
 	},
@@ -105,9 +105,9 @@ grunt.initConfig({
 		target: {
 			files: [{
 			expand: true,
-			cwd: 'release/css',
-			src: ['*.css', '!*.min.css'],
-			dest: 'release/css',
+			cwd: 'formative_3.1/css',
+			src: ['css/style.css','!style.min.css'],
+			dest: 'css/style.min.css',
 			ext: '.min.css'
 			}]
 		}
@@ -129,12 +129,8 @@ grunt.initConfig({
 
 
   // Default task(s).
-  grunt.registerTask('ugly', ['uglify']);
-  grunt.registerTask('test', ['watch']);
-  grunt.registerTask('default', ['sass']);
-  grunt.registerTask('html', ['htmlmin']);
-  grunt.registerTask('image', ['imagemin']);
-  grunt.registerTask('style', ['cssmin']);
+  grunt.registerTask('default', ['uglify'], ['sass'], ['csslint'], ['jshint'], ['watch']);
+  grunt.registerTask('default', ['htmlmin'], ['imagemin'], ['cssmin']);
   // 'default' checks everything, but can be renamed ie. default = test, [grunt] = [grunt test]
 
 };
