@@ -108,7 +108,7 @@ grunt.initConfig({
 
 
   // Default task(s).
-  grunt.registerTask('default', ['sass'], ['csslint'], ['jshint'], ['watch']);
+  grunt.registerTask('default', ['watch'], ['sass'], ['csslint'], ['jshint']);
   grunt.registerTask('mtask',['uglify'], ['cssmin']);
   // 'default' checks everything, but can be renamed ie. default = test, [grunt] = [grunt test]
 

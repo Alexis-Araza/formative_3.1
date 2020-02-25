@@ -26,28 +26,132 @@ $(document).ready(function(){
 			type:'GET',
 			data:'json',
 			success: function (data) {
-		      console.log(data);
+		      console.log(data.articles[0].description);
 
-		      // Empty results element first
-		      $("#results").html('');
-
-		      for (var i = 0; i < data.articles.length; i++) {
-		        var article = data.articles[i];
-
-		        // Append a new card for each article
-		        $("#results").append(`
-		          <div class="col-md-4 p-2">
-		            <div class="card" style="height: 100%">
-		              <img src="${article.urlToImage}" class="card-img-top">
-		              <div class="card-body">
-		                <h5 class="card-title">${article.title}</h5>
-		                <p class="card-text">${article.description}</p>
-		              </div>
-		            </div>
-		          </div>
-		        `);
-		      }
 		    },
+
+		//     $.ajax({
+  // url:url,
+  // type:'GET',
+  // data:'json',
+  // success: function(data){
+  //   console.log(data);
+  //   if (ep === 'collections'){
+  //     collections(data,ep, si);
+  //   } else if (ep === 'photos'){
+  //     photos(data, ep, si);
+  //   } else if (ep === 'users') {
+  //     users(data, ep, si);
+  //   }
+
+  //     //collections
+  //     function collections(d, e,s){
+  //       var k;
+  //       var userSize;
+
+  //       document.getElementById('result').innerHTML = '';
+
+  //       for(k = 0; k < d.length; k++ ){
+  //         if (s === 'full') {
+  //           userSize = d[k].cover_photo.urls.full;
+  //         } else if (s === 'raw') {
+  //           userSize = d[k].cover_photo.urls.raw;
+  //         } else if (s === 'regular') {
+  //           userSize = d[k].cover_photo.urls.regular;
+  //         }else if (s === 'small') {
+  //           userSize = d[k].cover_photo.urls.small;
+  //         } else if (s === 'thumb') {
+  //           userSize = d[k].cover_photo.urls.thumb;
+  //         }
+
+
+  //         document.getElementById('result').innerHTML +=
+  //         '<div class="col-6 my-3">' +
+
+  //           '<img class="img-thumbnail" alt="Image" src="' + userSize + '">' +
+  //         '</div>' +
+  //         '<div class="col-6 my-3">' +
+
+  //         '<h1 class="my2">' + d[k].title + ' ' + d[k].user.first_name +'</h1> <h2 class="my-3">' + 
+  //         d[k].description + '<br><br> Published at: ' + d[k].published_at + '</h2> <h3> ' + d[k].user.bio +' </h3>' +
+            
+  //         '</div>';
+  //       }//for
+  //     }//collections function
+
+
+
+  //     //Photos
+  //       function photos(d, e,s){
+  //         var j;
+  //         var photoSize;
+  //         document.getElementById('result').innerHTML = '';
+
+  //         for(j = 0; j < d.length; j++ ){
+  //           if (s === 'full') {
+  //             photoSize = d[j].urls.full;
+  //           } else if (s === 'raw') {
+  //             photoSize = d[j].urls.raw;
+  //           } else if (s === 'regular') {
+  //             photoSize = d[j].urls.regular;
+  //           }else if (s === 'small') {
+  //             photoSize = d[j].urls.small;
+  //           } else if (s === 'thumb') {
+  //             photoSize = d[j].urls.thumb;
+  //           }
+
+
+  //         document.getElementById('result').innerHTML +=
+  //         '<div class="col-6">' +
+  //           '<img class="img-thumbnail" alt="Image" src="' + photoSize + '">' +
+  //         '</div>';
+  //       } //for
+  //     }//photos function
+
+
+  //     //Users
+  //     function users(d, e, s) {
+  //       console.log(d,e,s)
+  //       document.getElementById('result').innerHTML = '';
+  //       var p;
+  //       var userPhoto;    
+  //       console.log(d.photos[0].urls.full);
+
+          
+          
+
+  //          document.getElementById('result').innerHTML +=  
+  //         '<div class="row border border-success">';
+
+  //         for(p = 0; p < d.photos.length; p++) {
+  //             if (s === 'full') {
+  //               userPhoto = d.photos[p].urls.full;
+  //             } else if (s === 'raw') {
+  //               userPhoto = d.photos[p].urls.raw;
+  //             } else if (s === 'regular') {
+  //               userPhoto = d.photos[p].urls.regular;
+  //             }else if (s === 'small') {
+  //               userPhoto = d.photos[p].urls.small;
+  //             } else if (s === 'thumb') {
+  //               userPhoto = d.photos[p].urls.thumb;
+  //             }
+  //             document.getElementById('result').innerHTML +=        
+             
+  //             '<img class="col-4 img-thumbnail" alt="Image" src="' + userPhoto + '">'          
+            
+  //          }//for
+               
+        
+
+  //        document.getElementById('result').innerHTML +=
+  //        '</div>'+
+  //         '<div class="mt-5 text-primary bg-info px-5 py-5">' +          
+  //           '<h1 class="my2">' + d.first_name + ' ' + d.last_name +'</h1> <h2 class="my-3">' + 
+  //           d.location + ' Total likes:' +d.total_likes + '</h2> <h3> ' + d.portfolio_url +' </h3>' +
+  //           '<img class="img-thumbnail" alt="Profile Image" src="' + d.profile_image.small + '">' +
+  //         '</div>'  + '<br>' ;
+
+  //     } //users function
 		    error: function () {
 		      console.log('error');
 		    }//error
