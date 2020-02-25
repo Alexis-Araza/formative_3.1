@@ -17,141 +17,40 @@ $(document).ready(function(){
 	});
 
 	function displayData (country,category) {
-		var url = 'http://newsapi.org/v2/top-headlines?&apiKey=${myKey[0]}';
+		// var url = `http://newsapi.org/v2/top-headlines?country=au&apiKey=${myKey[0]}`,
 	}
 
 		//ajax method
 		$.ajax({
-			url: url,
+			url: `http://newsapi.org/v2/top-headlines?country=us&apiKey=${myKey}`,
 			type:'GET',
 			data:'json',
 			success: function (data) {
 		      console.log(data.articles[0].description);
+					var i;
+				 for (i = 0; i < data.articles.length; i++) {
+				 for (i = 0; i < data.articles.length; i++) {
 
-		    },
+					 document.getElementById('result').innerHTML +=
+					 // for (j = 0; j < data.articles[i].source.id.length; j++) {
+					 '<div class="card mx-auto m-2 p-3 col col-sm-6 col-md-3 col-lg-3 mx-3" style="width: 18rem;">' +
+					 '<img src="' +  data.articles[i].urlToImage + '" class="card-img-top" alt="pic">' +
+					 '<div class="card-body text-center text-primary">' +
+						 '<h5 class="card-title">Article Title: ' + data.articles[i].title + '</h5>' +
+						 '<p class="card-text"><b>Published at</b>: ' + data.articles[i].publishedAt + '</p>' +
+						 '<p class="card-text"><b>ID</b>: ' + data.articles[i].source.id + '</p>' +
+						 '<p class="card-text"><b>Name</b>: ' + data.articles[i].source.name + '</p>' +
+						 '<p class="card-text"><b>Author</b>: ' + data.articles[i].author + '</p>' +
+						 '<p class="card-text"><b>Description</b>: ' + data.articles[i].description + '</p>' +
+						 '<p class="card-text"><b>Content</b>: ' + data.articles[i].content + '</p>' +
+						 '<a href="#" class="btn btn-primary">Go somewhere</a>' +
+					 '</div>' +
+				 '</div>';
+					 }
+				 }
 
-		//     $.ajax({
-  // url:url,
-  // type:'GET',
-  // data:'json',
-  // success: function(data){
-  //   console.log(data);
-  //   if (ep === 'collections'){
-  //     collections(data,ep, si);
-  //   } else if (ep === 'photos'){
-  //     photos(data, ep, si);
-  //   } else if (ep === 'users') {
-  //     users(data, ep, si);
-  //   }
+			 },
 
-  //     //collections
-  //     function collections(d, e,s){
-  //       var k;
-  //       var userSize;
-
-  //       document.getElementById('result').innerHTML = '';
-
-  //       for(k = 0; k < d.length; k++ ){
-  //         if (s === 'full') {
-  //           userSize = d[k].cover_photo.urls.full;
-  //         } else if (s === 'raw') {
-  //           userSize = d[k].cover_photo.urls.raw;
-  //         } else if (s === 'regular') {
-  //           userSize = d[k].cover_photo.urls.regular;
-  //         }else if (s === 'small') {
-  //           userSize = d[k].cover_photo.urls.small;
-  //         } else if (s === 'thumb') {
-  //           userSize = d[k].cover_photo.urls.thumb;
-  //         }
-
-
-  //         document.getElementById('result').innerHTML +=
-  //         '<div class="col-6 my-3">' +
-
-  //           '<img class="img-thumbnail" alt="Image" src="' + userSize + '">' +
-  //         '</div>' +
-  //         '<div class="col-6 my-3">' +
-
-  //         '<h1 class="my2">' + d[k].title + ' ' + d[k].user.first_name +'</h1> <h2 class="my-3">' + 
-  //         d[k].description + '<br><br> Published at: ' + d[k].published_at + '</h2> <h3> ' + d[k].user.bio +' </h3>' +
-            
-  //         '</div>';
-  //       }//for
-  //     }//collections function
-
-
-
-  //     //Photos
-  //       function photos(d, e,s){
-  //         var j;
-  //         var photoSize;
-  //         document.getElementById('result').innerHTML = '';
-
-  //         for(j = 0; j < d.length; j++ ){
-  //           if (s === 'full') {
-  //             photoSize = d[j].urls.full;
-  //           } else if (s === 'raw') {
-  //             photoSize = d[j].urls.raw;
-  //           } else if (s === 'regular') {
-  //             photoSize = d[j].urls.regular;
-  //           }else if (s === 'small') {
-  //             photoSize = d[j].urls.small;
-  //           } else if (s === 'thumb') {
-  //             photoSize = d[j].urls.thumb;
-  //           }
-
-
-  //         document.getElementById('result').innerHTML +=
-  //         '<div class="col-6">' +
-  //           '<img class="img-thumbnail" alt="Image" src="' + photoSize + '">' +
-  //         '</div>';
-  //       } //for
-  //     }//photos function
-
-
-  //     //Users
-  //     function users(d, e, s) {
-  //       console.log(d,e,s)
-  //       document.getElementById('result').innerHTML = '';
-  //       var p;
-  //       var userPhoto;    
-  //       console.log(d.photos[0].urls.full);
-
-          
-          
-
-  //          document.getElementById('result').innerHTML +=  
-  //         '<div class="row border border-success">';
-
-  //         for(p = 0; p < d.photos.length; p++) {
-  //             if (s === 'full') {
-  //               userPhoto = d.photos[p].urls.full;
-  //             } else if (s === 'raw') {
-  //               userPhoto = d.photos[p].urls.raw;
-  //             } else if (s === 'regular') {
-  //               userPhoto = d.photos[p].urls.regular;
-  //             }else if (s === 'small') {
-  //               userPhoto = d.photos[p].urls.small;
-  //             } else if (s === 'thumb') {
-  //               userPhoto = d.photos[p].urls.thumb;
-  //             }
-  //             document.getElementById('result').innerHTML +=        
-             
-  //             '<img class="col-4 img-thumbnail" alt="Image" src="' + userPhoto + '">'          
-            
-  //          }//for
-               
-        
-
-  //        document.getElementById('result').innerHTML +=
-  //        '</div>'+
-  //         '<div class="mt-5 text-primary bg-info px-5 py-5">' +          
-  //           '<h1 class="my2">' + d.first_name + ' ' + d.last_name +'</h1> <h2 class="my-3">' + 
-  //           d.location + ' Total likes:' +d.total_likes + '</h2> <h3> ' + d.portfolio_url +' </h3>' +
-  //           '<img class="img-thumbnail" alt="Profile Image" src="' + d.profile_image.small + '">' +
-  //         '</div>'  + '<br>' ;
-
-  //     } //users function
 		    error: function () {
 		      console.log('error');
 		    }//error
